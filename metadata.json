@@ -1,0 +1,7 @@
+{
+  "name": "LeadGen AI",
+  "description": "An AI-powered lead generation tool that researches professionals and businesses using Google Search Grounding to find contact details and social media profiles.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
