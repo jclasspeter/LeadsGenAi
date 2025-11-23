@@ -4,13 +4,29 @@ import { MapPinIcon, PhoneIcon, GlobeIcon, MailIcon } from './Icons';
 
 interface LeadCardProps {
   lead: Lead;
+  isSelected: boolean;
+  onToggleSelect: (id: string) => void;
   onEmailClick?: (lead: Lead) => void;
 }
 
-export const LeadCard: React.FC<LeadCardProps> = ({ lead, onEmailClick }) => {
+export const LeadCard: React.FC<LeadCardProps> = ({ lead, isSelected, onToggleSelect, onEmailClick }) => {
   return (
-    <div className="bg-white rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition-all p-5 flex flex-col h-full animate-fade-in-up">
-      <div className="flex justify-between items-start mb-3">
+    <div 
+      className={`
+        relative bg-white rounded-xl border shadow-sm hover:shadow-md transition-all p-5 flex flex-col h-full animate-fade-in-up
+        ${isSelected ? 'border-brand-500 ring-1 ring-brand-500 bg-brand-50/10' : 'border-slate-200'}
+      `}
+    >
+      <div className="absolute top-4 right-4 z-10">
+        <input 
+          type="checkbox" 
+          checked={isSelected}
+          onChange={() => onToggleSelect(lead.id)}
+          className="w-5 h-5 text-brand-600 border-slate-300 rounded focus:ring-brand-500 cursor-pointer accent-brand-600 transition-transform hover:scale-110"
+        />
+      </div>
+
+      <div className="flex justify-between items-start mb-3 pr-8">
         <div>
             <h3 className="text-lg font-bold text-slate-900 leading-tight">{lead.name}</h3>
             <span className="inline-block mt-1 px-2 py-0.5 rounded-full bg-brand-100 text-brand-700 text-xs font-medium">

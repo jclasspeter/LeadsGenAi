@@ -1,4 +1,5 @@
 
+
 export interface Lead {
   id: string;
   name: string;
@@ -34,4 +35,10 @@ export interface SearchHistoryItem {
   industry: string;
   location: string;
   timestamp: number;
+}
+
+export interface User {
+  id: string;
+  name: string;
+  email: string;
 }
